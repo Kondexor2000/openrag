@@ -71,3 +71,31 @@ python run_short_form_moe_hotpot.py \
 ```
 
 Tasks: `2wikimultihopqa`, `hotpotqa` and `musique`
+
+### Acknowledgement
+
+We are grateful to the works [Self-RAG](https://arxiv.org/abs/2310.11511), [Parameter-Efficient Sparsity Crafting](https://arxiv.org/abs/2401.02731), and [Beam Retrieval](https://arxiv.org/abs/2308.08973), especially for open-sourcing their artifacts.
+
+### Citation
+```bib
+@inproceedings{islam-etal-2024-open,
+    title = "Open-{RAG}: Enhanced Retrieval Augmented Reasoning with Open-Source Large Language Models",
+    author = "Islam, Shayekh Bin  and
+      Rahman, Md Asib  and
+      Hossain, K S M Tozammel  and
+      Hoque, Enamul  and
+      Joty, Shafiq  and
+      Parvez, Md Rizwan",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-emnlp.831",
+    pages = "14231--14244",
+    abstract = "Retrieval Augmented Generation (RAG) has been shown to enhance the factual accuracy of Large Language Models (LLMs) by providing external evidence, but existing methods often suffer from limited reasoning capabilities (e.g., multi-hop complexities) in effectively using such evidence, particularly when using open-source LLMs. To mitigate this gap, in this paper, we introduce a novel framework, **Open-RAG**, designed to enhance reasoning capabilities in RAG with open-source LLMs. Our framework transforms an arbitrary dense LLM into a parameter-efficient sparse mixture of experts (MoE) model capable of handling complex reasoning tasks, including both single- and multi-hop queries. Open-RAG uniquely trains the model to navigate challenging distractors that appear relevant but are misleading. By combining the constructive learning and architectural transformation, Open-RAG leverages latent learning, dynamically selecting relevant experts and integrating external knowledge effectively for more accurate and contextually relevant responses. Additionally, we propose a hybrid adaptive retrieval method to determine retrieval necessity and balance the trade-off between performance gain and inference speed. Experimental results show that Open-RAG outperforms state-of-the-art LLMs and RAG models in various knowledge-intensive tasks. Our method based on Llama2-7B sets new benchmarks, surpassing ChatGPT-RAG and Self-RAG. For example, in multi-hop HotpotQA, it achieves an EM score of 63.3, compared to RAG 2.0{'}s 54 and Command R+{'}s 60.",
+}
+```
