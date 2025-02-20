@@ -4,6 +4,14 @@ Official repository for the EMNLP Findings 2024 paper [Open-RAG: Enhanced Retrie
 
 [Model](https://huggingface.co/shayekh/openrag_llama2_7b_8x135m) | [Paper](https://arxiv.org/abs/2410.01782) | [Training data](https://huggingface.co/datasets/shayekh/openrag_train_data) | [Evaluation Data](https://huggingface.co/datasets/shayekh/openrag_bench)
 
+## Environment
+
+Setup the Python environment using `environment.yaml`:
+
+```sh
+conda env create --file=environment.yaml
+```
+
 ## Training 
 
 ### OpenRAG-7B-8x135M
@@ -50,18 +58,20 @@ torchrun --nnodes=1 --nproc_per_node=4 --master_port=29506 \
 
 ## Evaluation
 
-### Merge Expert Weights into the Base Model
+### (Optional) Merge Expert Weights into the Base Model
 
 ```
 python merge_moe_lora.py --base_model "meta-llama/Llama-2-7b-hf" \
   --model_path "./checkpoints"
 ```
 
-### Multi-Hop QA 
+### Multi-Hop QA
+
+Evaluate using the merged model by using `--model_name ./checkpoints/merged/` or provided checkpoint by `--model_name shayekh/openrag_llama2_7b_8x135m`
 
 ```sh
 python run_short_form_moe_hotpot.py \
-  --model_name ./checkpoints/merged/ \
+  --model_name shayekh/openrag_llama2_7b_8x135m \
   --world_size 1 --w_use 0.5 \
   --dataset shayekh/openrag_bench --task hotpotqa \
   --mode adaptive_retrieval --max_new_tokens 100 \
